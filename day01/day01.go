@@ -9,6 +9,9 @@ import (
 var ErrNoRows = sql.ErrNoRows
 
 func main() {
+	/**
+	   sql.ErrNoRows不应该Wrap往上抛，应该直接处理
+	**/
 	line := 0
 	db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/go_geek")
 	if err != nil {
