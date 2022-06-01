@@ -17,7 +17,7 @@ func NewUserService(uc *biz.UserUsecase, logger log.Logger) *UserService {
 	return &UserService{uc: uc, log: log.NewHelper(logger)}
 }
 
-func (u *UserService) Createuser(ctx context.Context, req *v1.CreateUserInfo) (*v1.UserInfoResponse, error) {
+func (u *UserService) CreateUser(ctx context.Context, req *v1.CreateUserInfo) (*v1.UserInfoResponse, error) {
 	user, err := u.uc.CreateUser(ctx, &biz.User{
 		Mobile:   req.Mobile,
 		Password: req.Password,
