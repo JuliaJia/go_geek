@@ -1,0 +1,23 @@
+syntax = "proto3";  // 指定proto版本
+package main;
+
+// protoc -I . --go_out=plugins=grpc:. ./hello.proto
+//定义包名称
+option go_package = "./";
+// option go_package = "../hello";  最新的版本需要指定路径
+
+// 定义rpc Hello服务
+service Hello{
+  // 定义SayHello方法
+  rpc SayHello(HelloRequest) returns (HelloResponse){}
+}
+
+// HelloRequest 请求结构
+message HelloRequest{
+  string name = 1;
+}
+
+// HelloResponse 响应结构
+message HelloResponse{
+  string message = 1;
+}
