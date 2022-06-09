@@ -15,6 +15,7 @@ type User struct {
 	Role     int
 }
 
+//go:generate mockgen -destination=../mocks/mrepo/user.go -package=mrepo . UserRepo
 type UserRepo interface {
 	CreateUser(context.Context, *User) (*User, error)
 }
