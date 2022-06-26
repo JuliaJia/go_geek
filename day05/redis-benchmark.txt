@@ -1,0 +1,13 @@
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 10
+
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 20
+
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 50
+
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 100
+
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 200
+
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 1000
+
+redis-benchmark -h localhost -p 6379 -c 100 -n 100000 -d 5000
