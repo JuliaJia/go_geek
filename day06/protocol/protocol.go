@@ -11,13 +11,10 @@ const (
 	Csdl = 4
 )
 
-// 封包
 func Packet(message []byte) []byte {
-	// 头部信息 + body长度 + 消息
 	return append(append([]byte(Ch), IntToBytes(len(message))...), message...)
 }
 
-// 解包
 func Unpack(buffer []byte, readerChannel chan []byte) []byte {
 	length := len(buffer)
 
@@ -31,20 +28,19 @@ func Unpack(buffer []byte, readerChannel chan []byte) []byte {
 			if length < i+Chl+Csdl+ml {
 				break
 			}
-			data := buffer[i+Chl+Csdl : i+Chl+Csdl+ml] // 信息
+			data := buffer[i+Chl+Csdl : i+Chl+Csdl+ml]
 			readerChannel <- data
 
-			i += Chl + Csdl + ml - 1 // end index
+			i += Chl + Csdl + ml - 1
 		}
 	}
 
 	if i == length {
 		return make([]byte, 0)
 	}
-	return buffer[i:] // return message
+	return buffer[i:]
 }
 
-// 整形转换成字节 int32 4个字节
 func IntToBytes(n int) []byte {
 	x := int32(n)
 
@@ -53,7 +49,6 @@ func IntToBytes(n int) []byte {
 	return bytesBuffer.Bytes()
 }
 
-// 字节转换成整形
 func BytesToInt(b []byte) int {
 	bytesBuffer := bytes.NewBuffer(b)
 
